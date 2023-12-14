@@ -5,7 +5,17 @@
   "projects": {
     "WeatherApp": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -98,6 +108,6 @@
     }
   },
   "cli": {
-    "analytics": "e97626ec-7403-4d0a-8a4d-9c1ec5581a04"
+    "analytics": "b2ffe3f6-6dbe-4418-b17c-1d7efa6519df"
   }
 }
