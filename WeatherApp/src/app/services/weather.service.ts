@@ -10,9 +10,14 @@ import { Observable } from 'rxjs';
 export class WeatherService {
   constructor(private http: HttpClient) {}
   getWeatherData(city: string): Observable<WeatherData> {
-    return this.http.get<WeatherData>(environment.weatherApiBaseUrl, {
-        params: new HttpParams()
-        .set('key', environment.weatherApiKey)
-    });
+    const apiUrl = `${environment.weatherApiBaseUrl}/${encodeURIComponent(city)}/?${environment.watherApiMetricSystem}`;
+
+    const params = new HttpParams().set('key', environment.weatherApiKey);
+
+    return this.http.get<WeatherData>(apiUrl, { params });
+    // return this.http.get<WeatherData>(environment.weatherApiBaseUrl, {
+    //     params: new HttpParams()
+    //     .set('key', environment.weatherApiKey)
+    // });
   }
 }
