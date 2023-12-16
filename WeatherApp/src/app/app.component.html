@@ -44,13 +44,13 @@
   </div>
 </div> -->
 
-<div class="container" ngIF="weatherData">
+<div class="container" *ngIf="weatherData">
   <div class="upper-data">
-    <img src="../assets/imgs/hot.png" alt="tempo quente" *ngIf="14 > 15" />
-    <img src="../assets/imgs/cold.png" alt="tempo frio" *ngIf="14 <= 15" />
+    <img src="../assets/imgs/hot.png" alt="tempo quente" *ngIf="weatherData.days[0].temp > 15" />
+    <img src="../assets/imgs/cold.png" alt="tempo frio" *ngIf="weatherData.days[0].temp <= 15" />
     <div class="weather-data">
-      <div class="location">Rio Grande</div>
-      <div class="temperature">{{14.40 | number:   '1.0-0'}}ºC</div>
+      <div class="location">{{weatherData.resolvedAddress}}</div>
+      <div class="temperature">{{weatherData.days[0].temp | number: '1.0-0'}}ºC</div>
     </div>
   </div>
   <div class="lower-data">
@@ -63,28 +63,28 @@
           <img src="../assets/imgs/min.png" alt="temperatura mínima">
           <span>min:</span>
         </div>
-        <div class="info-block-value">7ºC</div>
+        <div class="info-block-value">{{weatherData.days[0].tempmin  | number: '1.0-0'}}ºC</div>
       </div>
       <div class="info-block">
         <div class="info-block-label">
           <img src="../assets/imgs/max.png" alt="temperatura mínima">
           <span>max:</span>
         </div>
-        <div class="info-block-value">20ºC</div>
+        <div class="info-block-value">{{weatherData.days[0].tempmax  | number: '1.0-0'}}ºC</div>
       </div>
       <div class="info-block">
         <div class="info-block-label">
           <img src="../assets/imgs/humidity.png" alt="temperatura mínima">
           <span>umidade:</span>
         </div>
-        <div class="info-block-value">85%</div>
+        <div class="info-block-value">{{weatherData.days[0].humidity  | number: '1.0-0'}}%</div>
       </div>
       <div class="info-block">
         <div class="info-block-label">
           <img src="../assets/imgs/wind.png" alt="temperatura mínima">
           <span>vento:</span>
         </div>
-        <div class="info-block-value">3km/h</div>
+        <div class="info-block-value">{{weatherData.days[0].windspeed  | number: '1.0-0'}}km/h</div>
       </div>
     </div>
   </div>
